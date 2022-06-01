@@ -15,7 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ !github.event.issue.pull_request && (contains(github.event.issue.labels.*.name, 'foo') || contains(github.event.issue.labels.*.name, 'bar')) }}
 
-    steps:      
+    steps:
+      - uses: actions/checkout@v3
       - name: remove closing soon and pending-response labels
         shell: bash
         env:
