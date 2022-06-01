@@ -20,6 +20,7 @@ jobs:
       - name: remove closing soon and pending-response labels
         shell: bash
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
           gh issue edit $ISSUE_NUMBER --remove-label "foo" --remove-label "bar"
