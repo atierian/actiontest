@@ -1,0 +1,25 @@
+# Removes pending-response and closing-soon labels when an issue is closed.
+
+name: Cleanup Labels on Issue Close
+
+on:
+  issues:
+    types: [closed]
+
+permissions:
+  issues: write
+
+jobs:
+  cleanup:
+    name: Remove labels 
+    runs-on: ubuntu-latest
+    if: ${{ !github.event.issue.pull_request && (contains(github.event.issue.labels.*.name, 'foo') || contains(github.event.issue.labels.*.name, 'bar')) }}
+
+    steps:      
+      - name: remove closing soon and pending-response labels
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh issue edit $ISSUE_NUMBER --remove-label "foo" --remove-label "bar"
