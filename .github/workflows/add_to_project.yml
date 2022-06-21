@@ -13,7 +13,7 @@ jobs:
   project:
     name: Add to project 
     runs-on: ubuntu-latest
-    if: ${{ !github.event.issue.pull_request && (contains(github.event.label.name, 'amplify/') }}
+    if: ${{ !github.event.issue.pull_request && (contains(github.event.label.name, 'amplify/')) }}
 
     steps:
       - uses: actions/checkout@v3
