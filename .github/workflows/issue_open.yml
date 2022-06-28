@@ -10,7 +10,7 @@ permissions:
 jobs:
   maintainer-opened:
     runs-on: ubuntu-latest
-    if: ${{ !github.event.issue.pull_request && contains(fromJSON('["palpatim", "brennanMKE", "diegocstn", "lawmicha", "harsh62", "thisisabhash", "ameter", "royjit", "atierian", "ukhan-amazon", "ruisebas", "phantumcode"]'), github.event.issue.actor.login) }}
+    if: ${{ !github.event.issue.pull_request && contains(fromJSON('["palpatim", "brennanMKE", "diegocstn", "lawmicha", "harsh62", "thisisabhash", "ameter", "royjit", "atierian", "ukhan-amazon", "ruisebas", "phantumcode"]'), github.event.issue.user.login) }}
     steps:
       - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       - name: remove unnecessary labels after closing
