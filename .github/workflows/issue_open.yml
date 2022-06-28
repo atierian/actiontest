@@ -19,4 +19,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
-          gh issue comment $ISSUE_NUMBER -b "This issue was opened by a maintainer of this repository. We will post updates here. If you are also experiencing this issue, please comment here so that we're aware and can prioritize accordingly."
+          gh issue comment $ISSUE_NUMBER -b "This issue was opened by a maintainer of this repository. Updates will be posted here.\nIf you are also experiencing this issue, please comment here so that we're aware and can prioritize accordingly."
