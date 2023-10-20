@@ -27,27 +27,27 @@ jobs:
         run: echo  The tags are  
 
   log-level:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latestq
     steps:
       - name: Echo OS
         run: echo OS is ${{ inputs.OS }}
 
   os-iOS:
-    if: ${{ github.event_name != 'workflow_dispatch' || inputs.OS == 'info' }}
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.OS == 'iOS' }}
     runs-on: ubuntu-latest
     steps:
       - name: Echo iOS
         run: echo iOS ${{ inputs.OS }}
 
   os-watchOS:
-    if: ${{ github.event_name != 'workflow_dispatch' || inputs.OS == 'warning' }}
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.OS == 'watchOS' }}
     runs-on: ubuntu-latest
     steps:
       - name: Echo watchOS
         run: echo watchOS ${{ inputs.OS }}
 
   os-tvOS:
-    if: ${{ github.event_name != 'workflow_dispatch' || inputs.OS == 'debug' }}
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.OS == 'tvOS' }}
     runs-on: ubuntu-latest
     steps:
       - name: Echo tvOS
