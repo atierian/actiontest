@@ -1,10 +1,10 @@
 on:
   workflow_dispatch:
     inputs:
-      logLevel:
-        description: 'OS'
+      os:
+        description: 'Operating System 📱 📺 ⌚️ '
         required: true
-        default: 'warning'
+        default: 'iOS'
         type: choice
         options:
           - iOS
@@ -30,25 +30,25 @@ jobs:
     runs-on: ubuntu-latestq
     steps:
       - name: Echo OS
-        run: echo OS is ${{ inputs.OS }}
+        run: echo OS is ${{ inputs.os }}
 
   os-iOS:
-    if: ${{ github.event_name != 'workflow_dispatch' || inputs.OS == 'iOS' }}
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.os == 'iOS' }}
     runs-on: ubuntu-latest
     steps:
       - name: Echo iOS
-        run: echo iOS ${{ inputs.OS }}
+        run: echo iOS ${{ inputs.os }}
 
   os-watchOS:
-    if: ${{ github.event_name != 'workflow_dispatch' || inputs.OS == 'watchOS' }}
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.os == 'watchOS' }}
     runs-on: ubuntu-latest
     steps:
       - name: Echo watchOS
-        run: echo watchOS ${{ inputs.OS }}
+        run: echo watchOS ${{ inputs.os }}
 
   os-tvOS:
-    if: ${{ github.event_name != 'workflow_dispatch' || inputs.OS == 'tvOS' }}
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.os == 'tvOS' }}
     runs-on: ubuntu-latest
     steps:
       - name: Echo tvOS
-        run: echo tvOS ${{ inputs.OS }}
+        run: echo tvOS ${{ inputs.os }}
