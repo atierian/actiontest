@@ -2,14 +2,14 @@ on:
   workflow_dispatch:
     inputs:
       logLevel:
-        description: 'Log level'
+        description: 'OS'
         required: true
         default: 'warning'
         type: choice
         options:
-          - info
-          - warning
-          - debug
+          - iOS
+          - watchOS
+          - tvOS
       print_tags:
         description: 'True to print to STDOUT'
         required: true
@@ -29,26 +29,26 @@ jobs:
   log-level:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo logLevel
-        run: echo logLevel is ${{ inputs.logLevel }}
+      - name: Echo OS
+        run: echo OS is ${{ inputs.OS }}
 
-  log-level-info:
-    if: ${{ github.event_name != 'workflow_dispatch' || inputs.logLevel == 'info' }}
+  os-iOS:
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.OS == 'info' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Echo info
-        run: echo info ${{ inputs.logLevel }}
+      - name: Echo iOS
+        run: echo iOS ${{ inputs.OS }}
 
-  log-level-warning:
-    if: ${{ github.event_name != 'workflow_dispatch' || inputs.logLevel == 'warning' }}
+  os-watchOS:
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.OS == 'warning' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Echo warning
-        run: echo warning ${{ inputs.logLevel }}
+      - name: Echo watchOS
+        run: echo watchOS ${{ inputs.OS }}
 
-  log-level-debug:
-    if: ${{ github.event_name != 'workflow_dispatch' || inputs.logLevel == 'debug' }}
+  os-tvOS:
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.OS == 'debug' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Echo debug
-        run: echo debug ${{ inputs.logLevel }}
+      - name: Echo tvOS
+        run: echo tvOS ${{ inputs.OS }}
