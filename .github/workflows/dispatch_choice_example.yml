@@ -34,21 +34,21 @@ jobs:
         run: echo logLevel is ${{ inputs.logLevel }}
 
   log-level-info:
-    if: ${{ inputs.logLevel = 'info' }}
+    if: ${{ inputs.logLevel == 'info' }}
     runs-on: ubuntu-latest
     steps:
       - name: Echo info
         run: echo info ${{ inputs.logLevel }}
 
   log-level-warning:
-    if: ${{ inputs.logLevel = 'warning' }}
+    if: ${{ inputs.logLevel == 'warning' }}
     runs-on: ubuntu-latest
     steps:
       - name: Echo warning
         run: echo warning ${{ inputs.logLevel }}
 
   log-level-debug:
-    if: ${{ inputs.logLevel = 'debug' }}
+    if: ${{ inputs.logLevel == 'debug' }}
     runs-on: ubuntu-latest
     steps:
       - name: Echo debug
