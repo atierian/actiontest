@@ -1,17 +1,18 @@
 on:
   workflow_dispatch:
     inputs:
-      os:
-        description: 'Operating System 📱 📺 ⌚️ '
+      ios:
+        description: '📱 iOS'
         required: true
-        default: 'iOS'
-        type: choice
-        options:
-          - iOS
-          - watchOS
-          - tvOS
-      print_tags:
-        description: 'True to print to STDOUT'
+        default: true
+        type: boolean
+      tvos:
+        description: '📺 tvOS'
+        required: true
+        default: true
+        type: boolean
+      watchos:
+        description: '⌚️ watchOS'
         required: true
         default: true
         type: boolean
@@ -19,36 +20,23 @@ on:
     branches: [main]
 
 jobs:
-  print-tag:
-    runs-on: ubuntu-latest
-    if:  ${{ github.event_name != 'workflow_dispatch' || inputs.print_tags }} 
-    steps:
-      - name: Print the input tag to STDOUT
-        run: echo  The tags are  
-
-  log-level:
-    runs-on: ubuntu-latestq
-    steps:
-      - name: Echo OS
-        run: echo OS is ${{ inputs.os }}
-
   os-iOS:
-    if: ${{ github.event_name != 'workflow_dispatch' || inputs.os == 'iOS' }}
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.ios }}
     runs-on: ubuntu-latest
     steps:
       - name: Echo iOS
-        run: echo iOS ${{ inputs.os }}
-
-  os-watchOS:
-    if: ${{ github.event_name != 'workflow_dispatch' || inputs.os == 'watchOS' }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Echo watchOS
-        run: echo watchOS ${{ inputs.os }}
+        run: echo iOS ${{ inputs.ios }}
 
   os-tvOS:
-    if: ${{ github.event_name != 'workflow_dispatch' || inputs.os == 'tvOS' }}
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.tvos }}
     runs-on: ubuntu-latest
     steps:
       - name: Echo tvOS
-        run: echo tvOS ${{ inputs.os }}
+        run: echo tvOS ${{ inputs.tvos }}
+
+  os-watchOS:
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.watchos }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo watchOS
+        run: echo watchOS ${{ inputs.watchos }}
